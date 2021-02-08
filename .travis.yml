@@ -1,0 +1,15 @@
+arch: amd64
+
+language: java
+
+jdk:
+  - oraclejdk14
+
+cache:
+  directories:
+    - $HOME/.m2
+
+script:
+  - java --version
+  - mvn clean install
+  - mvn test
