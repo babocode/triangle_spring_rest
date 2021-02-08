@@ -2,12 +2,20 @@ plugins {
     id "org.springframework.boot" version "2.4.2"
     id 'io.spring.dependency-management' version '1.0.11.RELEASE'
     id 'java'
+    id 'org.jetbrains.kotlin.jvm' version '1.4.30'
 }
 
 group = 'net.hofmann.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
+sourceCompatibility = '14'
 
+
+task logInfo {
+    logging.captureStandardOutput LogLevel.INFO
+    doFirst {
+        println 'A task message which is logged at INFO level'
+    }
+}
 
 configurations {
     compileOnly {
@@ -20,16 +28,22 @@ repositories {
 }
 
 dependencies {
-    implementation 'org.projectlombok:lombok:1.18.16'
+    compile group: 'com.fasterxml.jackson.module', name: 'jackson-module-kotlin', version: '2.12.1'
+
+    implementation 'io.github.microutils:kotlin-logging-jvm:2.0.4'
+
+
+    implementation 'org.projectlombok:lombok:1.18.18'
     compileOnly 'org.projectlombok:lombok'
     annotationProcessor 'org.projectlombok:lombok'
 
     developmentOnly 'org.springframework.boot:spring-boot-devtools'
-
+    implementation("org.springframework.boot:spring-boot-starter-aop")
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation('org.springframework.boot:spring-boot-starter-test') {
         exclude group: 'org.junit.vintage', module: 'junit-vintage-engine'
     }
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 dependencyManagement {
@@ -40,6 +54,17 @@ dependencyManagement {
 test {
     useJUnitPlatform()
     testLogging {
-        showStandardStreams = true
+        showStandardStreams = false
+    }
+}
+compileKotlin {
+    kotlinOptions {
+
+        jvmTarget = "14"
+    }
+}
+compileTestKotlin {
+    kotlinOptions {
+        jvmTarget = "14"
     }
 }

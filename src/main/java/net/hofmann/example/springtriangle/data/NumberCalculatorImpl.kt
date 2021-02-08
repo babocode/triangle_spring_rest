@@ -1,18 +1,16 @@
-package net.hofmann.example.springtriangle.data;
+package net.hofmann.example.springtriangle.data
 
-import org.springframework.stereotype.Component;
-
-import java.util.Collections;
-import java.util.List;
+import org.springframework.stereotype.Component
+import java.util.*
 
 @Component
-public class NumberCalculatorImpl implements NumberCalculator {
+class NumberCalculatorImpl : NumberCalculator {
+    override fun numbers(): List<Int> {
+        return tenNumbers
+    }
 
-    final static List<Integer> tenNumbers = Collections.unmodifiableList(
-            List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10));
-
-    @Override
-    public List<Integer> numbers() {
-        return tenNumbers;
+    companion object {
+        val tenNumbers = Collections.unmodifiableList(
+                java.util.List.of(1, 2, 3, 4, 5, 6, 7, 8, 9, 10))
     }
 }

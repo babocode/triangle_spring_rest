@@ -1,11 +1,9 @@
-package net.hofmann.example.springtriangle.data;
+package net.hofmann.example.springtriangle.data
 
-import org.springframework.stereotype.Component;
-
-import java.awt.*;
+import org.springframework.stereotype.Component
+import java.awt.Point
 
 @Component
-public interface TriangleCalculator {
-
-    Float triangleArea(Point p1, Point p2, Point p3);
+interface TriangleCalculator {
+    fun triangleArea(A: Point, B: Point, C: Point): Float
 }

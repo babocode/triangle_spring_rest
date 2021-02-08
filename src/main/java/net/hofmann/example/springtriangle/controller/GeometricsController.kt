@@ -1,37 +1,30 @@
-package net.hofmann.example.springtriangle.controller;
+package net.hofmann.example.springtriangle.controller
 
-import net.hofmann.example.springtriangle.data.NumberCalculator;
-import net.hofmann.example.springtriangle.data.TriangleCalculator;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
-
-import java.awt.*;
-import java.util.List;
+import net.hofmann.example.springtriangle.data.NumberCalculator
+import net.hofmann.example.springtriangle.data.TriangleCalculator
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.GetMapping
+import org.springframework.web.bind.annotation.PathVariable
+import org.springframework.web.bind.annotation.RestController
+import java.awt.Point
 
 @RestController
-public class GeometricsController {
-
+class GeometricsController {
+    @Autowired
+    private val numberCalculator: NumberCalculator? = null
 
     @Autowired
-    private NumberCalculator numberCalculator;
-
-    @Autowired
-    private TriangleCalculator triangleCalculator;
-
+    private val triangleCalculator: TriangleCalculator? = null
 
     @GetMapping("/numbers")
-    public List<Integer> numbers() {
-        return numberCalculator.numbers();
+    fun numbers(): List<Int> {
+        return numberCalculator!!.numbers()
     }
 
-    @GetMapping ("/triangleArea/{p1x}-{p1y}/{p2x}-{p2y}/{p3x}-{p3y}")
-//    @GetMapping("/triangleArea")
-    public Float triangleArea(@PathVariable Integer p1x, @PathVariable Integer p1y, @PathVariable Integer p2x, @PathVariable Integer p2y, @PathVariable Integer p3x, @PathVariable Integer p3y) {
-        Float area = triangleCalculator.triangleArea(new Point(p1x, p1y), new Point(p2x, p2y), new Point(p3x, p3y));
+    @GetMapping("/triangleArea/{p1x}-{p1y}/{p2x}-{p2y}/{p3x}-{p3y}") //    @GetMapping("/triangleArea")
+    fun triangleArea(@PathVariable p1x: Int?, @PathVariable p1y: Int?, @PathVariable p2x: Int?, @PathVariable p2y: Int?, @PathVariable p3x: Int?, @PathVariable p3y: Int?): Float {
 
         //Send location in response
-        return area;
+        return triangleCalculator!!.triangleArea(Point(p1x!!, p1y!!), Point(p2x!!, p2y!!), Point(p3x!!, p3y!!))
     }
 }

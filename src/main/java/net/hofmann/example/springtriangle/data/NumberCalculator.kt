@@ -1,13 +1,8 @@
-package net.hofmann.example.springtriangle.data;
+package net.hofmann.example.springtriangle.data
 
-
-import org.springframework.stereotype.Component;
-
-import java.util.List;
+import org.springframework.stereotype.Component
 
 @Component
-public interface NumberCalculator {
-
-
-    List<Integer> numbers();
+interface NumberCalculator {
+    fun numbers(): List<Int>
 }

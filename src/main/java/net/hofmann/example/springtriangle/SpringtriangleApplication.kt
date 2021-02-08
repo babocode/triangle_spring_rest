@@ -1,13 +1,13 @@
-package net.hofmann.example.springtriangle;
+package net.hofmann.example.springtriangle
 
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+import org.springframework.boot.autoconfigure.SpringBootApplication
+import org.springframework.boot.runApplication
+
 
 @SpringBootApplication
-public class SpringtriangleApplication {
+open class SpringtriangleApplication
 
-    public static void main(String[] args) {
-        SpringApplication.run(SpringtriangleApplication.class, args);
-    }
-
+fun main(args: Array<String>) {
+    runApplication<SpringtriangleApplication>(*args)
 }
