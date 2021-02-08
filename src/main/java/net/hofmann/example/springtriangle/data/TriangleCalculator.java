@@ -7,5 +7,5 @@ import java.awt.*;
 @Component
 public interface TriangleCalculator {
 
-    Double triangleArea(Point p1, Point p2, Point p3);
+    Float triangleArea(Point p1, Point p2, Point p3);
 }
