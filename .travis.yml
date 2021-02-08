@@ -1,14 +1,9 @@
-arch: amd64
-
 language: java
+install: skip
 
-jdk:
-  - oraclejdk14
-
-cache:
-  directories:
-    - $HOME/.m2
+os: linux
+dist: trusty
+jdk: oraclejdk8
 
 script:
-  - java --version
-  - gradle test
+  - ./gradlew build --scan -s
