@@ -7,7 +7,7 @@ plugins {
 
 group = 'net.hofmann.example'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '14'
+sourceCompatibility = '11'
 
 
 task logInfo {
@@ -60,11 +60,11 @@ test {
 compileKotlin {
     kotlinOptions {
 
-        jvmTarget = "14"
+        jvmTarget = "11"
     }
 }
 compileTestKotlin {
     kotlinOptions {
-        jvmTarget = "14"
+        jvmTarget = "11"
     }
 }
